@@ -9,7 +9,7 @@
 
 {% for p in posts %}
     <hr/>
-    <h3>{{ p.title }}</h3>
+    <h2><a href = "{{ p.get_absolute_url }}">{{ p.title }}</a></h2>
     <h3>{{ p.created_at }}</h3>
     <h3>{{ p.content }}</h3>
 {% endfor %}
