@@ -120,32 +120,29 @@ class TestView(TestCase) :
         self.assertIn('아직 게시물이 없습니다', main_area.text)
 
     def test_post_detail(self) :
-        # There's one Post
-        post_001 = Post.objects.create(
-            title = "First Post",
-            content = "It's First",
-            author = self.user_desmos
-        )
         # that Post's url is /blog/1
-        self.assertEqual(post_001.get_absolute_url(), '/blog/1/')
+        self.assertEqual(self.post_001.get_absolute_url(), '/blog/1/')
 
         # first post's detail page test
         # if get first post's content with url, it work correctly
-        response = self.client.get(post_001.get_absolute_url())
+        response = self.client.get(self.post_001.get_absolute_url())
         self.assertEqual(response.status_code, 200)
         soup = BeautifulSoup(response.content, 'html.parser')
         # There's same nav bar 
         self.navbar_test(soup)
+        # There's same category card
+        self.category_card_test(soup)
         # First post's title is in browser tab's title
-        self.assertIn(post_001.title, soup.title.text)
+        self.assertIn(self.post_001.title, soup.title.text)
         # First post's content is in post-area
         main_area = soup.find('div', id = "main-area")
         post_area = main_area.find('div', id = "post-area")
-        self.assertIn(post_001.title, post_area.text)
+        self.assertIn(self.post_001.title, post_area.text)
+        self.assertIn(self.category_programming.name, post_area.text)
         # First post's author is in post-area
         self.assertIn(self.user_desmos.username.upper(), post_area.text)
         # First post's content is in post-area
-        self.assertIn(post_001.content, post_area.text)
+        self.assertIn(self.post_001.content, post_area.text)
 
     def navbar_test(self, soup) :
         navbar = soup.nav
