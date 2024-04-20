@@ -8,6 +8,8 @@ class TestView(TestCase) :
         self.client = Client()
         self.user_desmos = User.objects.create_user(username = "desmos", password = 'pass')
         self.user_mathway = User.objects.create_user(username = "mathway", password = "pass")
+        self.user_desmos.is_staff = True
+        self.user_desmos.save()
 
         self.category_programming = Category.objects.create(name = "programming", slug = "programming")
         self.category_music = Category.objects.create(name = "music", slug = "music")
@@ -179,9 +181,13 @@ class TestView(TestCase) :
         response = self.client.get('/blog/create_post/')
         self.assertNotEqual(response.status_code, 200)
 
-        # Do Login
-        self.client.login(username = 'desmos', password = "pass")
+        # If not staff login
+        self.client.login(username = 'mathway', password = "pass")
+        response = self.client.get('/blog/create_post/')
+        self.assertNotEqual(response.status_code, 200)
 
+        # If staff Login
+        self.client.login(username = 'desmos', password = "pass")
         response = self.client.get('/blog/create_post/')
         self.assertEqual(response.status_code, 200)
         soup = BeautifulSoup(response.content, 'html.parser')
