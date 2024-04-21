@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(k=doc_snavq-m-302#7zb=r(+ppj=kqdhs74c!9qvotvna8gr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['62.169.22.23']
+ALLOWED_HOSTS = ['62.169.22.23', 'localhost']
 
 
 # Application definition
@@ -40,8 +40,13 @@ INSTALLED_APPS = [
     'django_extensions',
 
     'crispy_forms',
-    'crispy_bootstrap4',
+    'crispy_bootstrap4', # 책과 다르게 추가된 내용
     'markdownx',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
     'blog',
     'single_pages'
@@ -55,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware', # 책과 다르게 추가된 내용
 ]
 
 ROOT_URLCONF = 'do_it_django_prj.urls'
@@ -133,3 +139,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+SITE_ID = 1
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+LOGIN_REDIRECT_URL = '/blog/'
