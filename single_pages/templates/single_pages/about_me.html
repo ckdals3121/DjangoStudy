@@ -1,18 +1,191 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang = "ko">
     <head>
         <meta charset = "UTF-8">
-        <title>개발자 오창민입니다.</title>
+        <title>About 오창민</title>
+
+        <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+        <link rel="stylesheet" href="{% static 'single_pages/css/about_me.css' %}" media="screen">
+        <script src="https://kit.fontawesome.com/0ee88ae914.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <nav>
-            <a href = "/blog/">Blog</a>
-            <a href = "/about_me/">About me</a>
-        </nav>
 
-        <h1>안녕하세요. 오창민입니다.</h1>
-        <h2>이력</h2>
-        <h2>Portfolio</h2>
-        <h3>아직 공사중입니다.</h3>
+        {% include 'blog/navbar.html' %}
+        <section>
+            <div class = "container mt-4">
+                <div class = "row">
+                    <div class = "col-lg-8">
+                        <h1>안녕하세요. 오창민입니다.</h1>
+                        <br/>
+                        <p class = "lead">
+                            야구보는 것과 컴퓨터를 좋아합니다.<br/>
+                            현재 산업기능요원으로 노드인프라 회사에서 블록체인 노드를 관리하는 중이며, 퇴근 후에는 주로 KBO를 시청하거나 컴퓨터 공부를 하며 시간을 보냅니다.
+                        </p>
+
+                        <ul>
+                            <li>WORK EXPERIENCE</li>
+                            <ul>
+                                <li>이마트(산학협력) - 리뷰데이터 감성분석(2022.04. ~ 2022.12.)</li>
+                                <li>노드인프라 - 노드관리 및 업무 자동화툴 개발(2023.03 ~)</li>
+                            </ul>
+                            <li>EDUCATION</li>
+                            <ul>
+                                <li>성균관대학교 소프트웨어학과 2학년 수료 후 휴학(2021.03. ~)</li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <div class = "col-lg-4">
+                        <img class = "img-fluid" src = "{% static 'single_pages/images/my_back.jpg' %}">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class = "bg-light margin-for-footer">
+            <div class = "container">
+                <div class = "row">
+                    <div class = "col-l2">
+                        <h1>PORTFOLIO</h1>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class = "col-lg-4">
+                        <div class = "card" data-toggle = "modal" data-target = "#emart">
+                            <img class = "card-img-top" src = "{% static 'single_pages/images/emart.png' %}">
+                            <div class = "card-body">
+                                <h5 class = "card-title">KoBERT 모델을 활용한 리뷰데이터 감성분석</h5>
+                                <p>KoBERT 모델에 이마트 리뷰데이터로 fine-tuning을 진행하여 리뷰데이터가 주어졌을 때 카테고리별 감성분석을 결과로 내어주는 모델을 만들었습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class = "col-lg-4">
+                        <div class = "card" data-toggle = "modal" data-target = "#sui_hackathon">
+                            <img class = "card-img-top" src = "{% static 'single_pages/images/sui_hackathon.jpeg' %}">
+                            <div class = "card-body">
+                                <h5 class = "card-title">SUI X KUCOIN LABS SUMMER HACKATHON</h5>
+                                <p>SUI X KUCOIN 해커톤 Game 분야에서 SUI 블록체인으로 BlackJack 게임을 구현하여 1등을 수상했습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = "col-lg-4">
+                        <div class = "card" data-toggle = "modal" data-target = "#polygon">
+                            <img class = "card-img-top" src = "{% static 'single_pages/images/polygon.png' %}">
+                            <div class = "card-body">
+                                <h5 class = "card-title">Polygon CDK IP 취득</h5>
+                                <p>Polygon CDK 라는 블록체인에 대하여 깊게 공부하고, 안정적으로 실행을 할 수 있게 노력하여 공식 파트너사가 되었습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="emart" tabindex="-1" role="dialog" aria-labelledby="emartModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="emartModalLabel">KoBERT 모델을 활용한 리뷰데이터 감성분석</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <img class="img-fluid" src="{% static 'single_pages/images/emart.png' %}">
+                            </div>
+                            <div class="col-lg-5">
+                                <p>KoBERT 모델에 이마트 리뷰데이터로 fine-tuning을 진행하여 리뷰데이터가 주어졌을 때 카테고리별 감성분석을 결과로 내어주는 모델을 만들었습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="sui_hackathon" tabindex="-1" role="dialog" aria-labelledby="SuiHackathonModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="SuiHackathonModalLabel">SUI X KUCOIN LABS SUMMER HACKATHON</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <img class="img-fluid" src="{% static 'single_pages/images/sui_hackathon.jpeg' %}">
+                            </div>
+                            <div class="col-lg-5">
+                                <p>
+                                    SUI X KUCOIN 해커톤 Game 분야에서 SUI 블록체인으로 BlackJack 게임을 구현하여 1등을 수상했습니다.
+                                    <br/>
+                                    Express 와 socket.io 를 활용하여 프론트의 요청을 받아서 블록체인 Contract Call 을 한 후 결과를 전달해주는 코드를 작성했습니다.
+                                </p>
+                                <button type="button" class="btn btn-light" onclick="window.open('https://blog.sui.io/hackathon-winners/')"><i class="fas fa-chalkboard-teacher"></i> Hackathon Result</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="polygon" tabindex="-1" role="dialog" aria-labelledby="polygonModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="polygonModalLabel">Polygon CDK IP 취득</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <img class="img-fluid" src="{% static 'single_pages/images/polygon.png' %}">
+                            </div>
+                            <div class="col-lg-5">
+                                <p>
+                                    Polygon CDK 라는 체인을 개발사와 직접 소통하며 노드 관련 업무를 하기 위해 Polygon CDK IP를 취득하는 일을 했습니다.
+                                    <br/>
+                                    이 과정에서 많은 컴포넌트들의 코드를 보며 실행 중 에러가 나는 이유를 디버깅 했고, terraform과 aws 를 활용하여 복잡한 chain deploy 과정을 간단하게 만들었습니다.
+                                </p>
+                                <button type="button" class="btn btn-light" onclick="window.open('https://ecosystem.polygon.technology/8794874561/')"><i class="fas fa-chalkboard-teacher"></i> Polygon CDK IP</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class = "fixed-bottom">
+            {% include 'blog/footer.html' %}
+        </div>
+
+        
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
     </body>
 </html>
